@@ -1,6 +1,85 @@
 .container {
 	width: 50%;
-	height: 500px;
+	height: 400px;
 	margin: 0px auto;
 	border: 1px solid black;
 }
+
+.calendarBox {
+	width: 80%;
+	min-height: 70%;
+	border: 1px solid black;
+	margin: 0px auto;
+	margin-top: 10%;
+}
+
+.headerHolder {
+	text-align: center;
+}
+
+.calendarHeader,
+.dayHeader {
+	display: inline-block;
+	width: 80%;
+	margin: 0px auto;
+	margin-top: 10%;
+	border: 1px solid black;
+	text-align: center;
+
+}
+
+.dayHeader {
+	border: none;
+	display: block;
+	width: 80%;
+	margin-bottom: 10%;
+}
+
+.dayBoxTop {
+	width: 11%;
+	display: inline-block;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.dayHolder {
+	width: 80%;
+	height: 60%;
+	margin: 0px auto;
+
+}
+
+.dayBox,
+.blankBox {
+	display: inline-block;
+	width: 13%;
+	height: 16%;
+	border: 1px solid black;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.blankBox {
+	border: none;
+	width: 13.6%;
+}
+
+#arrowRight {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 7.5px 0 7.5px 13.0px;
+	border-color: transparent transparent transparent #007bff;
+	display: inline-block;
+}
+
+#arrowLeft {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 7.5px 13.0px 7.5px 0;
+	border-color: transparent #007bff transparent transparent;
+	display: inline-block;
+}
+
+
