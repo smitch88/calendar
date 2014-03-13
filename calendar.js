@@ -4,8 +4,8 @@ $().ready( function () {
 
 var Calendar = (function() {
 	var months = ['January', 'February', 'March', 'April', 
-					'May', 'June', 'July', 'August', 
-					'September', 'October', 'November', 'December'
+			'May', 'June', 'July', 'August', 
+			'September', 'October', 'November', 'December'
 				];
 
 	var today = new Date();
@@ -26,6 +26,11 @@ var Calendar = (function() {
 		Array(31), Array(28), Array(31), Array(30), 
 		Array(31), Array(30), Array(31), Array(31), 
 		Array(30), Array(31), Array(30),Array(31)];
+
+		//making change for Leap Year
+		if (checkForLeapYear(year)) {
+			monthLengths[1] = Array(29)
+		}
 
 		var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		
@@ -64,8 +69,8 @@ var Calendar = (function() {
 		}
 		//startDay is used here to determine how many blank Divs are necessary
 		//when displaying the calendar
-		console.log(thisMonth)
 		displayMonth(thisMonth, month, year, startDay)
+		highlightDay(month, year)
 	}
 
 	var displayMonth = function(month, name, year, blankDivTotal) {
@@ -83,7 +88,8 @@ var Calendar = (function() {
 		}
 
 		for (var i=0; i <= month.length-1; i++) {
-			dayHolder.append('<div class="dayBox">'+ month[i].date+'</div>')
+			var day = month[i].date
+			dayHolder.append('<div class="dayBox" id=day'+day+'>'+day+'</div>')
 		}
 
 	}
@@ -121,6 +127,32 @@ var Calendar = (function() {
 		var newMonth = months[monthIndex];	
 		generateYear(newMonth, startingYear)
 	}
+
+	var highlightDay = function(month, year) {
+		var correctYear = today.getFullYear()
+		var correctMonth = months[today.getMonth()]
+
+		if (month === correctMonth && year === correctYear) {
+			$('#day' + today.getDate()).css('background-color', 'red')
+		}
+	}
+
+	var checkForLeapYear = function(year) {
+		var isLeapYear = false;
+
+		if (year % 4 === 0 && year % 100 != 0) {
+			//leap year
+			isLeapYear = true;
+		}
+
+		else if (year % 4 && year % 400 === 0) {
+			//leap year
+			isLeapYear = true;
+		}
+
+		return isLeapYear
+	}
+
 	return {
 		'init': init
 	}

@@ -1,14 +1,13 @@
 .container {
-	width: 50%;
+	width: 400px;
 	height: 400px;
 	margin: 0px auto;
-	border: 1px solid black;
 }
 
 .calendarBox {
 	width: 80%;
-	min-height: 70%;
-	border: 1px solid black;
+	min-height: 75%;
+	border: 4px solid #336699;
 	margin: 0px auto;
 	margin-top: 10%;
 }
@@ -28,6 +27,12 @@
 
 }
 
+.calendarHeader {
+	background: #003366;
+	font-family: 'avenir';
+	color: white;
+}
+
 .dayHeader {
 	border: none;
 	display: block;
@@ -36,10 +41,16 @@
 }
 
 .dayBoxTop {
-	width: 11%;
+	width: 13.5%;
 	display: inline-block;
 	border: 1px solid black;
 	text-align: center;
+	margin: -3px;
+	background-color: #FFCC66;
+	border-color: white;
+	color: black;
+	font-family: 'avenir'
+
 }
 
 .dayHolder {
@@ -54,14 +65,20 @@
 	display: inline-block;
 	width: 13%;
 	height: 16%;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin: 0px auto;
 	text-align: center;
 }
 
+.dayBox {
+	background-color: #336699;
+	color: white;
+	font-family: 'avenir'
+}
+
 .blankBox {
 	border: none;
-	width: 13.6%;
+	width: 13.8%;
 }
 
 #arrowRight {
@@ -80,6 +97,16 @@
 	border-width: 7.5px 13.0px 7.5px 0;
 	border-color: transparent #007bff transparent transparent;
 	display: inline-block;
+}
+
+footer {
+	text-align: center;
+	font-family: 'avenir';
+}
+
+a,
+a:active {
+	color: black;
 }
 
 
