@@ -99,6 +99,21 @@
 	display: inline-block;
 }
 
+.alertBox {
+	border: 1px solid black;
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	margin-left: 60px;
+	margin-top: 60px;
+	background-color: #625D5D;
+	opacity: .9;
+	color: white;
+	text-align: center;
+	font-family: 'avenir';
+	display: none;
+}
+
 footer {
 	text-align: center;
 	font-family: 'avenir';

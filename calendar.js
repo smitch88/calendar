@@ -4,9 +4,8 @@ $().ready( function () {
 
 var Calendar = (function() {
 	var months = ['January', 'February', 'March', 'April', 
-			'May', 'June', 'July', 'August', 
-			'September', 'October', 'November', 'December'
-				];
+	'May', 'June', 'July', 'August', 
+	'September', 'October', 'November', 'December'];
 
 	var today = new Date();
 	var startingYear = today.getFullYear();
@@ -69,8 +68,13 @@ var Calendar = (function() {
 		}
 		//startDay is used here to determine how many blank Divs are necessary
 		//when displaying the calendar
-		displayMonth(thisMonth, month, year, startDay)
-		highlightDay(month, year)
+		displayMonth(thisMonth, month, year, startDay);
+
+		//highlighting today
+		highlightDay(month, year);
+
+		//passing the current month info to the alert function
+		showPopUpsOnClick(thisMonth);
 	}
 
 	var displayMonth = function(month, name, year, blankDivTotal) {
@@ -107,7 +111,8 @@ var Calendar = (function() {
 				monthIndex = 11
 				startingYear--;
 			}
-			generateNewYear(startingYear)
+			generateNewYear(startingYear);
+			$('.alertBox').slideUp();
 		})
 
 		arrowRight.on('click', function() {
@@ -119,7 +124,8 @@ var Calendar = (function() {
 				monthIndex = 0
 				startingYear++
 			}
-			generateNewYear(startingYear)
+			generateNewYear(startingYear);
+			$('.alertBox').slideUp();
 		})
 	}
 
@@ -140,17 +146,31 @@ var Calendar = (function() {
 	var checkForLeapYear = function(year) {
 		var isLeapYear = false;
 
-		if (year % 4 === 0 && year % 100 != 0) {
-			//leap year
-			isLeapYear = true;
-		}
-
-		else if (year % 4 && year % 400 === 0) {
+		if (year % 4 === 0 && (year % 100 != 0 || year % 400 != 0) ){
 			//leap year
 			isLeapYear = true;
 		}
 
 		return isLeapYear
+	}
+
+	var showPopUpsOnClick = function(month) {
+		var day = $('.dayBox');
+		var alertBox = $('.alertBox')
+
+		day.on('click', function(e) {
+			var id = e.target.id;
+			var day = id.slice(3); //removes 'day' from ID tag
+			var dayObject = month[day-1] //0 indexed
+
+			alertBox.text(dayObject.day + ', ' + dayObject.date)
+			alertBox.slideDown();
+		})
+
+		alertBox.on('click', function() {
+			alertBox.slideUp();
+		})
+
 	}
 
 	return {
